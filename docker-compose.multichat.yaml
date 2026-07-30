@@ -1,32 +1,87 @@
 version: '3'
 
 services:
+  traefik:
+    image: traefik:v3.7.9
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=multichat_proxy
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+      - --certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL:?Set ACME_EMAIL in .env}
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - letsencrypt_data:/letsencrypt
+    networks:
+      - proxy
+    restart: always
+
   base: &base
     image: neologicchat/chatwoot:latest
-    env_file: .env ## Change this file for customized env variables
+    env_file: .env
     volumes:
       - storage_data:/app/storage
 
   rails:
     <<: *base
-    ports:
-      - '127.0.0.1:3000:3000'
+    depends_on:
+      - redis
     environment:
       - NODE_ENV=production
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
     entrypoint: docker/entrypoints/rails.sh
     command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=multichat_proxy
+      - traefik.http.routers.multichat.rule=Host(`${TRAEFIK_HOST:?Set TRAEFIK_HOST in .env}`)
+      - traefik.http.routers.multichat.entrypoints=websecure
+      - traefik.http.routers.multichat.tls.certresolver=letsencrypt
+      - traefik.http.services.multichat.loadbalancer.server.port=3000
+    networks:
+      - app
+      - proxy
     restart: always
 
   sidekiq:
     <<: *base
+    depends_on:
+      - redis
     environment:
       - NODE_ENV=production
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
     command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
+    networks:
+      - app
     restart: always
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command: ["sh", "-c", "redis-server --requirepass \"$REDIS_PASSWORD\""]
+    env_file: .env
+    volumes:
+      - redis_data:/data
+    networks:
+      - app
 
 volumes:
   storage_data:
+  redis_data:
+  letsencrypt_data:
+
+networks:
+  app:
+    name: multichat_app
+  proxy:
+    name: multichat_proxy
