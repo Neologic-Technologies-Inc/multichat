@@ -3,14 +3,17 @@
     "SHOWING_RESULTS": "Mostrando {firstIndex}-{lastIndex} de {totalCount} elementos",
     "PHONE_INPUT": {
       "PLACEHOLDER": "Buscar",
-      "EMPTY_STATE": "No se encontraron resultados"
+      "EMPTY_STATE": "No se encontraron resultados",
+      "CLEAR_SELECTION": "Borrar selección",
+      "SELECT_COUNTRY": "Seleccionar país"
     },
     "CLOSE": "Cerrar",
     "BETA": "Beta",
-    "BETA_DESCRIPTION": "This feature is in beta and may change as we improve it.",
-    "ACCEPT": "Accept",
+    "BETA_DESCRIPTION": "Esta función está en beta y puede cambiar mientras la mejoramos.",
+    "ACCEPT": "Aceptar",
     "DISCARD": "Descartar",
-    "PREFERRED": "Preferred"
+    "PREFERRED": "Preferido",
+    "NO_IMAGE": "Sin imagen"
   },
   "CHOICE_TOGGLE": {
     "YES": "Si",

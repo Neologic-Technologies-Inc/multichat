@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onBeforeUnmount, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { useCallSession } from 'dashboard/composables/useCallSession';
@@ -17,6 +18,7 @@ const RINGTONE_URL = '/audio/dashboard/ringtone.mp3';
 const route = useRoute();
 const router = useRouter();
 const store = useStore();
+const { t } = useI18n();
 
 const {
   activeCall,
@@ -94,7 +96,7 @@ const getCallInfo = call => {
   // Look up inbox from the call's own inboxId — the conversation can drop out
   // of the Vuex store when the user navigates between inbox views, so going
   // through `conversation.inbox_id` would lose the inbox name (and fall back
-  // to the literal "Customer support" string).
+  // to the translated customer-support fallback).
   const inbox = store.getters['inboxes/getInbox'](call?.inboxId);
   const sender = conversation?.meta?.sender;
   // `caller` is the snapshot captured when the call first landed (from the
@@ -114,7 +116,9 @@ const getCallInfo = call => {
   // there's always something to show.
   const locationParts = [city, country].filter(Boolean);
   const location =
-    locationParts.join(', ') || inbox?.name || 'Customer support';
+    locationParts.join(', ') ||
+    inbox?.name ||
+    t('CALLS_PAGE.FLOATING_WIDGET.CUSTOMER_SUPPORT');
   return {
     conversation,
     inbox,
@@ -123,9 +127,9 @@ const getCallInfo = call => {
       sender?.name ||
       caller?.phone ||
       sender?.phone_number ||
-      'Unknown caller',
+      t('CALLS_PAGE.FLOATING_WIDGET.UNKNOWN_CALLER'),
     phoneNumber: caller?.phone || sender?.phone_number || '',
-    inboxName: inbox?.name || 'Customer support',
+    inboxName: inbox?.name || t('CALLS_PAGE.FLOATING_WIDGET.CUSTOMER_SUPPORT'),
     location,
     countryFlag: countryCodeToFlag(countryCode),
     hasLocation: locationParts.length > 0,

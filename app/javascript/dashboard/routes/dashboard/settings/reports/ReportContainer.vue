@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex';
 import { useReportMetrics } from 'dashboard/composables/useReportMetrics';
 import { GROUP_BY_FILTER, METRIC_CHART } from './constants';
 import fromUnixTime from 'date-fns/fromUnixTime';
-import format from 'date-fns/format';
+import { formatDate } from 'shared/helpers/dateFnsLocale';
 import { formatTime } from '@chatwoot/utils';
 import { useAlert } from 'dashboard/composables';
 import ChartStats from './components/ChartElements/ChartStats.vue';
@@ -116,18 +116,32 @@ export default {
           const last_day = first_day + 6;
           const week_first_date = new Date(week_date.setDate(first_day));
           const week_last_date = new Date(week_date.setDate(last_day));
-          return `${format(week_first_date, 'dd-MMM')} - ${format(
+          const locale = this.$i18n.locale;
+          return `${formatDate(week_first_date, 'dd-MMM', locale)} - ${formatDate(
             week_last_date,
-            'dd-MMM'
+            'dd-MMM',
+            locale
           )}`;
         }
         if (this.groupBy?.period === GROUP_BY_FILTER[3].period) {
-          return format(fromUnixTime(element.timestamp), 'MMM-yyyy');
+          return formatDate(
+            fromUnixTime(element.timestamp),
+            'MMM-yyyy',
+            this.$i18n.locale
+          );
         }
         if (this.groupBy?.period === GROUP_BY_FILTER[4].period) {
-          return format(fromUnixTime(element.timestamp), 'yyyy');
+          return formatDate(
+            fromUnixTime(element.timestamp),
+            'yyyy',
+            this.$i18n.locale
+          );
         }
-        return format(fromUnixTime(element.timestamp), 'dd-MMM');
+        return formatDate(
+          fromUnixTime(element.timestamp),
+          'dd-MMM',
+          this.$i18n.locale
+        );
       });
       const datasets = METRIC_CHART[metric.KEY].datasets.map(dataset => {
         switch (dataset.type) {

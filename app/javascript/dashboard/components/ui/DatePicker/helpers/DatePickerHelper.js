@@ -8,7 +8,6 @@ import {
   addYears,
   startOfMonth,
   isSameMonth,
-  format,
   startOfWeek,
   endOfWeek,
   addWeeks,
@@ -18,6 +17,7 @@ import {
   isSameDay,
   isWithinInterval,
 } from 'date-fns';
+import { formatDate } from 'shared/helpers/dateFnsLocale';
 
 // Constants for calendar and date ranges
 export const calendarWeeks = [
@@ -82,17 +82,19 @@ export const CALENDAR_PERIODS = {
 };
 
 // Utility functions for date operations
-export const monthName = currentDate => format(currentDate, 'MMMM');
-export const yearName = currentDate => format(currentDate, 'yyyy');
+export const monthName = (currentDate, locale) =>
+  formatDate(currentDate, 'MMMM', locale);
+export const yearName = (currentDate, locale) =>
+  formatDate(currentDate, 'yyyy', locale);
 
-export const getIntlDateFormatForLocale = () => {
+export const getIntlDateFormatForLocale = (locale = navigator.language) => {
   const year = 2222;
   const month = 12;
   const day = 15;
   const date = new Date(year, month - 1, day);
-  const formattedDate = new Intl.DateTimeFormat(navigator.language).format(
-    date
-  );
+  const formattedDate = new Intl.DateTimeFormat(
+    locale.replace(/_/g, '-')
+  ).format(date);
   return formattedDate
     .replace(`${year}`, 'yyyy')
     .replace(`${month}`, 'MM')

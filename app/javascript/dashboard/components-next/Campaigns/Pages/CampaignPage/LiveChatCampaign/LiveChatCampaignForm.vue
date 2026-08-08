@@ -92,7 +92,7 @@ const inboxOptions = computed(() =>
 );
 
 const sendersAndBotList = computed(() => [
-  { value: 0, label: 'Bot' },
+  { value: 0, label: t('CAMPAIGN.LIVE_CHAT.CREATE.FORM.SENT_BY.BOT') },
   ...mapToOptions(senderList.value, 'id', 'name'),
 ]);
 

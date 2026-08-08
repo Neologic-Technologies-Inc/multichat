@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from 'vue';
-import { format, getMonth, setMonth, startOfMonth } from 'date-fns';
+import { getMonth, setMonth, startOfMonth } from 'date-fns';
+import { useI18n } from 'vue-i18n';
+import { formatDate } from 'shared/helpers/dateFnsLocale';
 import {
   yearName,
   CALENDAR_TYPES,
@@ -20,10 +22,13 @@ const props = defineProps({
 
 const emit = defineEmits(['selectMonth', 'prev', 'next', 'setView']);
 const { START_CALENDAR } = CALENDAR_TYPES;
-const { MONTH, YEAR } = CALENDAR_PERIODS;
+const { YEAR } = CALENDAR_PERIODS;
+const { locale } = useI18n();
 
-const months = Array.from({ length: 12 }, (_, index) =>
-  format(setMonth(startOfMonth(new Date()), index), 'MMM')
+const months = computed(() =>
+  Array.from({ length: 12 }, (_, index) =>
+    formatDate(setMonth(startOfMonth(new Date()), index), 'MMM', locale.value)
+  )
 );
 
 const activeMonthIndex = computed(() => {
@@ -59,7 +64,7 @@ const selectMonth = index => {
       :button-label="
         yearName(
           calendarType === START_CALENDAR ? startCurrentDate : endCurrentDate,
-          MONTH
+          locale
         )
       "
       @set-view="setViewMode"

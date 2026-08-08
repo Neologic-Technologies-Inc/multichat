@@ -36,7 +36,7 @@ const { t } = useI18n();
 
     <img
       :src="candlesImagePath"
-      alt="Candles"
+      :alt="t('YEAR_IN_REVIEW.INTRO_IMAGE_ALT')"
       class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-auto h-32 md:h-48 lg:h-64"
     />
   </div>

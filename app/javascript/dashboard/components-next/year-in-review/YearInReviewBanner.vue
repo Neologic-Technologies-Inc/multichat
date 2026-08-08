@@ -60,6 +60,7 @@ const closeBanner = event => {
         </span>
         <button
           class="inline-flex items-center justify-center rounded hover:bg-white hover:bg-opacity-20 transition-colors p-0"
+          :aria-label="t('YEAR_IN_REVIEW.BANNER.CLOSE_BUTTON')"
           @click="closeBanner"
         >
           <Icon
@@ -71,7 +72,7 @@ const closeBanner = event => {
       <div class="flex flex-col gap-3">
         <img
           :src="yearInReviewBannerImage"
-          alt="Year in Review"
+          :alt="t('YEAR_IN_REVIEW.BANNER.IMAGE_ALT')"
           class="w-full h-auto rounded"
         />
         <button

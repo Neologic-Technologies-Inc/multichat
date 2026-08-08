@@ -44,7 +44,7 @@ const performanceHelperText = computed(() => {
 
           <img
             :src="coffeeImage"
-            alt="Coffee"
+            :alt="t('YEAR_IN_REVIEW.BUSIEST_DAY.COFFEE_IMAGE_ALT')"
             class="w-auto h-32 md:h-56 lg:h-72"
           />
         </div>
@@ -54,7 +54,7 @@ const performanceHelperText = computed(() => {
         <div class="flex items-center justify-center gap-3 md:gap-8">
           <img
             :src="doubleQuotesImage"
-            alt="Quote"
+            :alt="t('YEAR_IN_REVIEW.BUSIEST_DAY.QUOTE_IMAGE_ALT')"
             class="w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16"
           />
           <div class="flex-1">

@@ -46,7 +46,7 @@ const greetingMessage = computed(() => {
     </div>
     <OnboardingFeatureCard
       image-src="/dashboard/images/onboarding/omnichannel-inbox.png"
-      image-alt="Omnichannel"
+      :image-alt="$t('ONBOARDING.IMAGE_ALT.OMNICHANNEL')"
       to="settings_inbox_new"
       :title="$t('ONBOARDING.ALL_CONVERSATION.TITLE')"
       :description="$t('ONBOARDING.ALL_CONVERSATION.DESCRIPTION')"
@@ -54,7 +54,7 @@ const greetingMessage = computed(() => {
     />
     <OnboardingFeatureCard
       image-src="/dashboard/images/onboarding/teams.png"
-      image-alt="Teams"
+      :image-alt="$t('ONBOARDING.IMAGE_ALT.TEAMS')"
       to="settings_teams_new"
       :title="$t('ONBOARDING.TEAM_MEMBERS.TITLE')"
       :description="$t('ONBOARDING.TEAM_MEMBERS.DESCRIPTION')"
@@ -62,7 +62,7 @@ const greetingMessage = computed(() => {
     />
     <OnboardingFeatureCard
       image-src="/dashboard/images/onboarding/canned-responses.png"
-      image-alt="Canned responses"
+      :image-alt="$t('ONBOARDING.IMAGE_ALT.CANNED_RESPONSES')"
       to="canned_list"
       :title="$t('ONBOARDING.CANNED_RESPONSES.TITLE')"
       :description="$t('ONBOARDING.CANNED_RESPONSES.DESCRIPTION')"
@@ -70,7 +70,7 @@ const greetingMessage = computed(() => {
     />
     <OnboardingFeatureCard
       image-src="/dashboard/images/onboarding/labels.png"
-      image-alt="Labels"
+      :image-alt="$t('ONBOARDING.IMAGE_ALT.LABELS')"
       to="labels_list"
       :title="$t('ONBOARDING.LABELS.TITLE')"
       :description="$t('ONBOARDING.LABELS.DESCRIPTION')"

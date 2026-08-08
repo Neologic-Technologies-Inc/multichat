@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import Button from 'dashboard/components-next/button/Button.vue';
 
 defineProps({
@@ -7,6 +8,8 @@ defineProps({
     required: true,
   },
 });
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -24,7 +27,9 @@ defineProps({
       <Button
         v-for="(button, index) in message.buttons"
         :key="index"
-        :label="button.text || button.title || 'Button'"
+        :label="
+          button.text || button.title || t('CONTENT_TEMPLATES.PREVIEW.BUTTON')
+        "
         slate
         class="!text-n-blue-11 w-full"
       />

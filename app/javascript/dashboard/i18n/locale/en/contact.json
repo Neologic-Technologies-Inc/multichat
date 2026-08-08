@@ -563,6 +563,7 @@
         }
       },
       "NOTES": {
+        "BOT": "Bot",
         "PLACEHOLDER": "Add a note",
         "WROTE": "wrote",
         "YOU": "You",

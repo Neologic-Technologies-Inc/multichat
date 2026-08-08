@@ -174,7 +174,8 @@
           "SLA_MISSED_NEXT_RESPONSE": "A conversation misses next response SLA",
           "SLA_MISSED_RESOLUTION": "A conversation misses resolution SLA"
         },
-        "BROWSER_PERMISSION": "Enable push notifications for your browser so you’re able to receive them"
+        "BROWSER_PERMISSION": "Enable push notifications for your browser so you’re able to receive them",
+        "DESKTOP_UNSUPPORTED": "This browser does not support desktop notifications"
       },
       "API": {
         "UPDATE_SUCCESS": "Your notification preferences are updated successfully",
@@ -548,7 +549,9 @@
       },
       "HELP_CENTER_SEARCH": {
         "TITLE": "Help Center Search Indexing",
-        "DESCRIPTION": "Use AI for context aware search inside your help center articles."
+        "DESCRIPTION": "Use AI for context aware search inside your help center articles.",
+        "MODEL_TITLE": "Help Center Search Model",
+        "MODEL_DESCRIPTION": "Select the AI model to use for context-aware searches in your help center articles."
       },
       "LABEL_SUGGESTION": {
         "TITLE": "Label Suggestion",

@@ -18,6 +18,7 @@
       "STEP1_TITLE": "Scan QR Code with Your Authenticator App",
       "STEP1_DESCRIPTION": "Use Google Authenticator, Authy, or any TOTP-compatible app",
       "LOADING_QR": "Loading...",
+      "QR_CODE_ALT": "MFA QR code",
       "MANUAL_ENTRY": "Can't scan? Enter code manually",
       "SECRET_KEY": "Secret Key",
       "COPY": "Copy",

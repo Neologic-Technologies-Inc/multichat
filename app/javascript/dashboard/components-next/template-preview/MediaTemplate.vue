@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import FileIcon from 'dashboard/components-next/icon/FileIcon.vue';
 
 const props = defineProps({
@@ -8,6 +9,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const { t } = useI18n();
 
 const PDF_EXTENSIONS = ['.pdf', 'pdf'];
 const VIDEO_EXTENSIONS = ['.mp4', '.mov', 'video'];
@@ -39,7 +42,7 @@ const fileType = computed(() => {
       v-if="mediaType === 'image'"
       :src="message.image_url"
       class="object-cover w-full max-h-44 rounded-lg"
-      alt="Template media"
+      :alt="t('CONTENT_TEMPLATES.PREVIEW.MEDIA_ALT')"
     />
 
     <div

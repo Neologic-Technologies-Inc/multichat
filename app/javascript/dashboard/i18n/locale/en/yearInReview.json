@@ -4,10 +4,13 @@
     "LOADING": "Loading your year in review...",
     "ERROR": "Failed to load year in review",
     "CLOSE": "Close",
+    "INTRO_IMAGE_ALT": "Candles",
     "CONVERSATIONS": {
       "TITLE": "You have handled",
       "SUBTITLE": "conversations",
       "FALLBACK": "This year wasn't about the numbers. It was about showing up.",
+      "CLOUD_IMAGE_ALT": "Cloud",
+      "QUOTE_IMAGE_ALT": "Quote",
       "COMPARISON": {
         "0_50": "You showed up, and that's how every good inbox begins.",
         "50_100": "You kept the replies flowing and the conversations alive.",
@@ -20,6 +23,8 @@
     "BUSIEST_DAY": {
       "TITLE": "Your busiest day was",
       "MESSAGE": "{count} conversations that day.",
+      "COFFEE_IMAGE_ALT": "Coffee",
+      "QUOTE_IMAGE_ALT": "Quote",
       "COMPARISON": {
         "0_5": "A warm-up lap that barely woke the inbox.",
         "5_10": "Enough action to justify a second cup of coffee.",
@@ -32,6 +37,20 @@
     },
     "PERSONALITY": {
       "TITLE": "Your support personality is",
+      "CLOCK_IMAGE_ALT": "Clock",
+      "QUOTE_IMAGE_ALT": "Quote",
+      "LABELS": {
+        "SWIFT_HELPER": "Swift Helper",
+        "QUICK_RESPONDER": "Quick Responder",
+        "STEADY_SUPPORT": "Steady Support",
+        "THOUGHTFUL_ADVISOR": "Thoughtful Advisor"
+      },
+      "RESPONSE_TIME": {
+        "LESS_THAN_A_MINUTE": "less than a minute",
+        "MINUTES": "{minutes} minute | {minutes} minutes",
+        "HOURS": "{hours} hour | {hours} hours",
+        "MORE_THAN_A_DAY": "more than a day"
+      },
       "MESSAGES": {
         "SWIFT_HELPER": "You replied in {time} on average. Faster than most notifications.",
         "QUICK_RESPONDER": "You replied in {time} on average. The inbox barely waited.",
@@ -49,11 +68,16 @@
       "DOWNLOAD": "Download",
       "SHARE_TITLE": "My {year} Year in Review",
       "SHARE_TEXT": "Check out my {year} Year in Review with Chatwoot!",
-      "BRANDING": "Made with Chatwoot"
+      "BRANDING": "Made with Chatwoot",
+      "CLOSE_BUTTON": "Close share dialog",
+      "IMAGE_ALT": "Year in Review image",
+      "SHARE_BUTTON": "Share image"
     },
     "BANNER": {
       "TITLE": "Your {year} Year in Review is here",
-      "BUTTON": "See your impact"
+      "BUTTON": "See your impact",
+      "IMAGE_ALT": "Year in Review",
+      "CLOSE_BUTTON": "Dismiss Year in Review banner"
     },
     "NAVIGATION": {
       "PREVIOUS": "Previous",

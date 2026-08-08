@@ -1,5 +1,7 @@
 <script setup>
-import { format, fromUnixTime } from 'date-fns';
+import { fromUnixTime } from 'date-fns';
+import { useI18n } from 'vue-i18n';
+import { formatDate } from 'shared/helpers/dateFnsLocale';
 
 defineProps({
   label: {
@@ -11,8 +13,9 @@ defineProps({
     required: true,
   },
 });
-const formatDate = timestamp =>
-  format(fromUnixTime(timestamp), 'MMM dd, yyyy, hh:mm a');
+const { locale } = useI18n();
+const formatEventDate = timestamp =>
+  formatDate(fromUnixTime(timestamp), 'MMM dd, yyyy, hh:mm a', locale.value);
 </script>
 
 <template>
@@ -28,7 +31,7 @@ const formatDate = timestamp =>
         :key="item.id"
         class="text-sm font-normal text-n-slate-12 text-right tabular-nums"
       >
-        {{ formatDate(item.created_at) }}
+        {{ formatEventDate(item.created_at) }}
       </span>
       <slot name="showMore" />
     </div>

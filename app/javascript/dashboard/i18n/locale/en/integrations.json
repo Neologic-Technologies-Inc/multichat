@@ -335,7 +335,15 @@
           "PRIORITY": {
             "LABEL": "Priority",
             "PLACEHOLDER": "Select priority",
-            "SEARCH": "Search priority"
+            "SEARCH": "Search priority",
+            "OPTIONS": {
+              "NO_PRIORITY": "No priority",
+              "URGENT": "Urgent",
+              "HIGH": "High",
+              "NORMAL": "Normal",
+              "MEDIUM": "Medium",
+              "LOW": "Low"
+            }
           },
           "LABEL": {
             "LABEL": "Label",
@@ -548,6 +556,7 @@
     },
     "ASSISTANTS": {
       "HEADER": "Assistants",
+      "DESCRIPTION_NOT_AVAILABLE": "Description not available",
       "NO_ASSISTANTS_AVAILABLE": "There are no assistants available in your account.",
       "ADD_NEW": "Create a new assistant",
       "DELETE": {

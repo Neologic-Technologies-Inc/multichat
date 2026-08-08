@@ -10,19 +10,19 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'This is a title',
+      default: '',
     },
     description: {
       type: String,
-      default: 'This is your description',
+      default: '',
     },
     confirmLabel: {
       type: String,
-      default: 'Yes',
+      default: '',
     },
     cancelLabel: {
       type: String,
-      default: 'No',
+      default: '',
     },
   },
   data: () => ({
@@ -55,10 +55,22 @@ export default {
 <template>
   <Modal v-model:show="show" :on-close="cancel">
     <div class="h-auto overflow-auto flex flex-col">
-      <woot-modal-header :header-title="title" :header-content="description" />
+      <woot-modal-header
+        :header-title="title || $t('CONFIRMATION_MODAL.TITLE')"
+        :header-content="description || $t('CONFIRMATION_MODAL.DESCRIPTION')"
+      />
       <div class="flex flex-row justify-end gap-2 py-4 px-6 w-full">
-        <NextButton faded type="reset" :label="cancelLabel" @click="cancel" />
-        <NextButton type="submit" :label="confirmLabel" @click="confirm" />
+        <NextButton
+          faded
+          type="reset"
+          :label="cancelLabel || $t('CONFIRMATION_MODAL.CANCEL')"
+          @click="cancel"
+        />
+        <NextButton
+          type="submit"
+          :label="confirmLabel || $t('CONFIRMATION_MODAL.CONFIRM')"
+          @click="confirm"
+        />
       </div>
     </div>
   </Modal>

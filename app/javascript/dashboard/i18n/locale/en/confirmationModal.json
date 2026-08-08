@@ -1,0 +1,8 @@
+{
+  "CONFIRMATION_MODAL": {
+    "TITLE": "Confirmation",
+    "DESCRIPTION": "Please confirm your action.",
+    "CONFIRM": "Yes",
+    "CANCEL": "No"
+  }
+}

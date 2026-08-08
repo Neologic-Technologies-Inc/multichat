@@ -1,0 +1,20 @@
+{
+  "SUPERADMIN": {
+    "DASHBOARD": {
+      "TITLE": "Admin Dashboard",
+      "ACCOUNTS": "Accounts",
+      "USERS": "Users",
+      "INBOXES": "Inboxes",
+      "CONVERSATIONS": "Conversations"
+    },
+    "PLAYGROUND": {
+      "BACK": "Back",
+      "TITLE": "Robin AI playground",
+      "DESCRIPTION_PREFIX": "Chat with the source",
+      "DESCRIPTION_SUFFIX": "and evaluate its efficiency.",
+      "MESSAGE_PLACEHOLDER": "Type a message... [CMD/CTRL + Enter to send]",
+      "RESPONSE_ERROR": "Error: Could not retrieve response. Please check the console for more details.",
+      "TYPING_INDICATOR_ALT": "Typing indicator"
+    }
+  }
+}

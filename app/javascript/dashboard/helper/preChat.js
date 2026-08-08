@@ -6,18 +6,20 @@ const defaultTranslations = Object.fromEntries(
 export const standardFieldKeys = {
   emailAddress: {
     key: 'EMAIL_ADDRESS',
-    label: 'Email Id',
-    placeholder: 'Please enter your email address',
+    label: defaultTranslations.PRE_CHAT_FORM.FIELDS.EMAIL_ADDRESS.LABEL,
+    placeholder:
+      defaultTranslations.PRE_CHAT_FORM.FIELDS.EMAIL_ADDRESS.PLACEHOLDER,
   },
   fullName: {
     key: 'FULL_NAME',
-    label: 'Full Name',
-    placeholder: 'Please enter your full name',
+    label: defaultTranslations.PRE_CHAT_FORM.FIELDS.FULL_NAME.LABEL,
+    placeholder: defaultTranslations.PRE_CHAT_FORM.FIELDS.FULL_NAME.PLACEHOLDER,
   },
   phoneNumber: {
     key: 'PHONE_NUMBER',
-    label: 'Phone Number',
-    placeholder: 'Please enter your phone number',
+    label: defaultTranslations.PRE_CHAT_FORM.FIELDS.PHONE_NUMBER.LABEL,
+    placeholder:
+      defaultTranslations.PRE_CHAT_FORM.FIELDS.PHONE_NUMBER.PLACEHOLDER,
   },
 };
 

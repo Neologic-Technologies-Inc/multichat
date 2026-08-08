@@ -31,13 +31,38 @@ const projects = ref([]);
 const labels = ref([]);
 const statuses = ref([]);
 
-const priorities = [
-  { id: 0, name: 'No priority' },
-  { id: 1, name: 'Urgent' },
-  { id: 2, name: 'High' },
-  { id: 3, name: 'Normal' },
-  { id: 4, name: 'Low' },
-];
+const priorities = computed(() => [
+  {
+    id: 0,
+    name: t(
+      'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.NO_PRIORITY'
+    ),
+  },
+  {
+    id: 1,
+    name: t(
+      'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.URGENT'
+    ),
+  },
+  {
+    id: 2,
+    name: t(
+      'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.HIGH'
+    ),
+  },
+  {
+    id: 3,
+    name: t(
+      'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.NORMAL'
+    ),
+  },
+  {
+    id: 4,
+    name: t(
+      'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.LOW'
+    ),
+  },
+]);
 
 const statusDesiredOrder = [
   'Backlog',
@@ -103,7 +128,7 @@ const dropdowns = computed(() => {
     {
       type: 'priority',
       label: 'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.LABEL',
-      items: priorities,
+      items: priorities.value,
       placeholder:
         'INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.SEARCH',
       error: '',

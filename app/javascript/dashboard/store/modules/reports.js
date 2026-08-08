@@ -291,7 +291,7 @@ export const actions = {
       .then(response => {
         downloadCsvFile(
           generateFileName({
-            type: 'Conversation traffic',
+            type: reportObj.fileName,
             to: reportObj.to,
           }),
           response.data

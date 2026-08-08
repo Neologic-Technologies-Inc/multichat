@@ -3,11 +3,16 @@
     "PREVIOUS_PERIOD": "Previous period",
     "NEXT_PERIOD": "Next period",
     "WEEK_NUMBER": "Week #{weekNumber}",
+    "SELECT_DATE_RANGE": "Select a date range",
+    "VALID_TIME_RANGE_REQUIRED": "Please select a valid time range",
     "APPLY_BUTTON": "Apply",
     "CLEAR_BUTTON": "Clear",
     "DATE_RANGE_INPUT": {
       "START": "Start Date",
-      "END": "End Date"
+      "END": "End Date",
+      "INVALID_FORMAT": "Please enter the date in valid format: {format}",
+      "START_BEFORE_END": "Start date must be before the end date.",
+      "END_AFTER_START": "End date must be after the start date."
     },
     "DATE_RANGE_OPTIONS": {
       "TITLE": "DATE RANGE",

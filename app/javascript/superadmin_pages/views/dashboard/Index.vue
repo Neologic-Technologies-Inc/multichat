@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import BarChart from 'shared/components/charts/BarChart.vue';
 const props = defineProps({
   componentData: {
@@ -7,6 +8,7 @@ const props = defineProps({
     default: () => ({}),
   },
 });
+const { t } = useI18n();
 
 const prepareData = sourceData => {
   var labels = [];
@@ -22,7 +24,7 @@ const prepareData = sourceData => {
         type: 'bar',
         backgroundColor: 'rgb(31, 147, 255)',
         yAxisID: 'y',
-        label: 'Conversations',
+        label: t('SUPERADMIN.DASHBOARD.CONVERSATIONS'),
         data: data,
       },
     ],
@@ -41,7 +43,7 @@ const { accountsCount, usersCount, inboxesCount, conversationsCount } =
   <div class="w-full h-full">
     <header class="main-content__header" role="banner">
       <h1 id="page-title" class="main-content__page-title">
-        {{ 'Admin Dashboard' }}
+        {{ $t('SUPERADMIN.DASHBOARD.TITLE') }}
       </h1>
     </header>
 
@@ -49,19 +51,19 @@ const { accountsCount, usersCount, inboxesCount, conversationsCount } =
       <div class="report--list">
         <div class="report-card">
           <div class="metric">{{ accountsCount }}</div>
-          <div>{{ 'Accounts' }}</div>
+          <div>{{ $t('SUPERADMIN.DASHBOARD.ACCOUNTS') }}</div>
         </div>
         <div class="report-card">
           <div class="metric">{{ usersCount }}</div>
-          <div>{{ 'Users' }}</div>
+          <div>{{ $t('SUPERADMIN.DASHBOARD.USERS') }}</div>
         </div>
         <div class="report-card">
           <div class="metric">{{ inboxesCount }}</div>
-          <div>{{ 'Inboxes' }}</div>
+          <div>{{ $t('SUPERADMIN.DASHBOARD.INBOXES') }}</div>
         </div>
         <div class="report-card">
           <div class="metric">{{ conversationsCount }}</div>
-          <div>{{ 'Conversations' }}</div>
+          <div>{{ $t('SUPERADMIN.DASHBOARD.CONVERSATIONS') }}</div>
         </div>
       </div>
     </section>

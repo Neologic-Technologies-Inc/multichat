@@ -16,12 +16,12 @@ export default {
     <img
       class="m-4 w-32 hidden dark:block"
       src="dashboard/assets/images/no-chat-dark.svg"
-      alt="No Chat dark"
+      :alt="$t('CONVERSATION.NO_CHAT_DARK_IMAGE_ALT')"
     />
     <img
       class="m-4 w-32 block dark:hidden"
       src="dashboard/assets/images/no-chat.svg"
-      alt="No Chat"
+      :alt="$t('CONVERSATION.NO_CHAT_IMAGE_ALT')"
     />
     <span class="text-sm text-n-slate-12 font-medium text-center">
       {{ message }}

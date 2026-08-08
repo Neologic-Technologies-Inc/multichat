@@ -52,7 +52,7 @@ onMounted(() => {
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-1.5 min-w-0">
         <Avatar
-          :name="note?.user?.name || 'Bot'"
+          :name="note?.user?.name || t('CONTACTS_LAYOUT.SIDEBAR.NOTES.BOT')"
           :src="
             note?.user?.name
               ? note?.user?.thumbnail

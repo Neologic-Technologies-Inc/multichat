@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import Button from 'dashboard/components-next/button/Button.vue';
 
 defineProps({
@@ -17,6 +18,8 @@ defineProps({
 });
 
 const emit = defineEmits(['readMore', 'dismiss', 'imgClick']);
+
+const { t } = useI18n();
 
 const handleReadMore = () => {
   emit('readMore');
@@ -61,7 +64,7 @@ const handleImgClick = () => {
     >
       <img
         :src="card.feature_image"
-        :alt="`${card.title} preview image`"
+        :alt="t('CHANGELOG_CARD.PREVIEW_IMAGE', { title: card.title })"
         class="object-cover w-full h-24 rounded-md cursor-pointer"
         loading="lazy"
         @click.stop="handleImgClick"
@@ -73,7 +76,7 @@ const handleImgClick = () => {
     >
       <img
         :src="card.feature_image"
-        :alt="`${card.title} preview image`"
+        :alt="t('CHANGELOG_CARD.PREVIEW_IMAGE', { title: card.title })"
         class="object-cover w-full h-24 rounded-md cursor-pointer"
         loading="lazy"
         @click.stop="handleImgClick"
@@ -82,7 +85,7 @@ const handleImgClick = () => {
 
     <div class="flex justify-between items-center mt-1">
       <Button
-        label="Read more"
+        :label="t('CHANGELOG_CARD.READ_MORE')"
         color="slate"
         link
         sm
@@ -90,7 +93,7 @@ const handleImgClick = () => {
         @click.stop="handleReadMore"
       />
       <Button
-        label="Dismiss"
+        :label="t('CHANGELOG_CARD.DISMISS')"
         color="slate"
         link
         sm

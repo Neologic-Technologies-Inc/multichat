@@ -71,7 +71,7 @@ const performanceHelperText = computed(() => {
 
           <img
             :src="cloudImage"
-            alt="Cloud"
+            :alt="t('YEAR_IN_REVIEW.CONVERSATIONS.CLOUD_IMAGE_ALT')"
             class="w-auto h-32 md:h-56 lg:h-80 -mr-2"
           />
         </div>
@@ -80,7 +80,7 @@ const performanceHelperText = computed(() => {
       <div class="flex items-center justify-center gap-3 md:gap-6">
         <img
           :src="doubleQuotesImage"
-          alt="Quote"
+          :alt="t('YEAR_IN_REVIEW.CONVERSATIONS.QUOTE_IMAGE_ALT')"
           class="w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16"
         />
         <p

@@ -42,7 +42,8 @@
           "SENT_BY": {
             "LABEL": "Sent by",
             "PLACEHOLDER": "Please select sender",
-            "ERROR": "Sender is required"
+            "ERROR": "Sender is required",
+            "BOT": "Bot"
           },
           "END_POINT": {
             "LABEL": "URL",

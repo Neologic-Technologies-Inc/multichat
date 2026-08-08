@@ -239,7 +239,7 @@ onMounted(() => {
           <div class="rounded-lg shadow outline-1 outline-n-strong outline">
             <img
               :src="qrCodes.whatsapp"
-              alt="WhatsApp QR Code"
+              :alt="$t('INBOX_MGMT.FINISH.WHATSAPP_QR_CODE_ALT')"
               class="rounded-lg size-48 dark:invert"
             />
           </div>
@@ -254,7 +254,7 @@ onMounted(() => {
           <div class="rounded-lg shadow outline-1 outline-n-strong outline">
             <img
               :src="qrCodes.messenger"
-              alt="Messenger QR Code"
+              :alt="$t('INBOX_MGMT.FINISH.MESSENGER_QR_CODE_ALT')"
               class="rounded-lg size-48 dark:invert"
             />
           </div>
@@ -270,7 +270,7 @@ onMounted(() => {
           <div class="rounded-lg shadow outline-1 outline-n-strong outline">
             <img
               :src="qrCodes.telegram"
-              alt="Telegram QR Code"
+              :alt="$t('INBOX_MGMT.FINISH.TELEGRAM_QR_CODE_ALT')"
               class="rounded-lg size-48 dark:invert"
             />
           </div>

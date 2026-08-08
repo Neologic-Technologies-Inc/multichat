@@ -1,5 +1,7 @@
 {
   "REPORT": {
+    "DEFAULT_TITLE": "Download Reports",
+    "DEFAULT_DOWNLOAD_BUTTON": "Download Reports",
     "HEADER": "Conversations",
     "LOADING_CHART": "Loading chart data...",
     "NO_ENOUGH_DATA": "We've not received enough data points to generate report, Please try again later.",

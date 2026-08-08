@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { parse, isValid, isAfter, isBefore } from 'date-fns';
 import {
   getIntlDateFormatForLocale,
@@ -17,15 +18,19 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update', 'validate', 'error']);
+const { t, locale } = useI18n();
 
 const { START_CALENDAR, END_CALENDAR } = CALENDAR_TYPES;
 
-const dateFormat = computed(() => getIntlDateFormatForLocale()?.toUpperCase());
+const dateFormat = computed(() =>
+  getIntlDateFormatForLocale(locale.value)?.toUpperCase()
+);
 
 const localDateValue = computed({
-  get: () => props.dateValue?.toLocaleDateString(navigator.language) || '',
+  get: () =>
+    props.dateValue?.toLocaleDateString(locale.value.replace(/_/g, '-')) || '',
   set: newValue => {
-    const format = getIntlDateFormatForLocale();
+    const format = getIntlDateFormatForLocale(locale.value);
     const parsedDate = parse(newValue, format, new Date());
     if (isValid(parsedDate)) {
       emit('update', parsedDate);
@@ -35,7 +40,12 @@ const localDateValue = computed({
 
 const validateDate = () => {
   if (!isValid(props.dateValue)) {
-    emit('error', `Please enter the date in valid format: ${dateFormat.value}`);
+    emit(
+      'error',
+      t('DATE_PICKER.DATE_RANGE_INPUT.INVALID_FORMAT', {
+        format: dateFormat.value,
+      })
+    );
     return;
   }
 
@@ -44,9 +54,9 @@ const validateDate = () => {
   const isEndCalendar = calendarType === END_CALENDAR;
 
   if (compareDate && isStartCalendar && isAfter(dateValue, compareDate)) {
-    emit('error', 'Start date must be before the end date.');
+    emit('error', t('DATE_PICKER.DATE_RANGE_INPUT.START_BEFORE_END'));
   } else if (compareDate && isEndCalendar && isBefore(dateValue, compareDate)) {
-    emit('error', 'End date must be after the start date.');
+    emit('error', t('DATE_PICKER.DATE_RANGE_INPUT.END_AFTER_START'));
   } else {
     emit('validate', dateValue);
   }

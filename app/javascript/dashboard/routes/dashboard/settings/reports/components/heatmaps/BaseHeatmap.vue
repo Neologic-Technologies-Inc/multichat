@@ -2,13 +2,13 @@
 import { computed } from 'vue';
 import { useMemoize } from '@vueuse/core';
 
-import format from 'date-fns/format';
 import getDay from 'date-fns/getDay';
 
 import { getQuantileIntervals } from '@chatwoot/utils';
 
 import { groupHeatmapByDay } from 'helpers/ReportsDataHelper';
 import { useI18n } from 'vue-i18n';
+import { formatDate as formatLocalizedDate } from 'shared/helpers/dateFnsLocale';
 import { useHeatmapTooltip } from './composables/useHeatmapTooltip';
 import HeatmapTooltip from './HeatmapTooltip.vue';
 
@@ -31,7 +31,7 @@ const props = defineProps({
     validator: value => ['blue', 'green'].includes(value),
   },
 });
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const dataRows = computed(() => {
   const groupedData = groupHeatmapByDay(props.heatmapData);
@@ -51,7 +51,7 @@ const quantileRange = computed(() => {
 });
 
 function formatDate(dateString) {
-  return format(new Date(dateString), 'MMM d, yyyy');
+  return formatLocalizedDate(new Date(dateString), 'MMM d, yyyy', locale.value);
 }
 
 const DAYS_OF_WEEK = [
