@@ -1,5 +1,6 @@
-import { format, parseISO, isValid as isValidDate } from 'date-fns';
+import { parseISO, isValid as isValidDate } from 'date-fns';
 import DOMPurify from 'dompurify';
+import { formatDate } from 'shared/helpers/dateFnsLocale';
 
 /**
  * Extracts plain text from HTML content
@@ -98,13 +99,13 @@ export const getEmailDate = lastEmail => {
  * @param {Date} date - Date to format
  * @returns {string} Formatted date string
  */
-export const formatQuotedEmailDate = date => {
+export const formatQuotedEmailDate = (date, locale) => {
   try {
-    return format(date, "EEE, MMM d, yyyy 'at' p");
+    return formatDate(date, "EEE, MMM d, yyyy 'at' p", locale);
   } catch (error) {
     const fallbackDate = new Date(date);
     if (!Number.isNaN(fallbackDate.getTime())) {
-      return format(fallbackDate, "EEE, MMM d, yyyy 'at' p");
+      return formatDate(fallbackDate, "EEE, MMM d, yyyy 'at' p", locale);
     }
   }
 
@@ -139,7 +140,11 @@ export const getInboxEmail = (lastEmail, inbox) => {
  * @param {Object} contact - Contact object
  * @returns {string} Formatted header string
  */
-export const buildQuotedEmailHeaderFromContact = (lastEmail, contact) => {
+export const buildQuotedEmailHeaderFromContact = (
+  lastEmail,
+  contact,
+  locale
+) => {
   if (!lastEmail) {
     return '';
   }
@@ -151,7 +156,7 @@ export const buildQuotedEmailHeaderFromContact = (lastEmail, contact) => {
     return '';
   }
 
-  const formattedDate = formatQuotedEmailDate(quotedDate);
+  const formattedDate = formatQuotedEmailDate(quotedDate, locale);
   if (!formattedDate) {
     return '';
   }
@@ -171,7 +176,7 @@ export const buildQuotedEmailHeaderFromContact = (lastEmail, contact) => {
  * @param {Object} inbox - Inbox object
  * @returns {string} Formatted header string
  */
-export const buildQuotedEmailHeaderFromInbox = (lastEmail, inbox) => {
+export const buildQuotedEmailHeaderFromInbox = (lastEmail, inbox, locale) => {
   if (!lastEmail) {
     return '';
   }
@@ -183,7 +188,7 @@ export const buildQuotedEmailHeaderFromInbox = (lastEmail, inbox) => {
     return '';
   }
 
-  const formattedDate = formatQuotedEmailDate(quotedDate);
+  const formattedDate = formatQuotedEmailDate(quotedDate, locale);
   if (!formattedDate) {
     return '';
   }
@@ -204,7 +209,7 @@ export const buildQuotedEmailHeaderFromInbox = (lastEmail, inbox) => {
  * @param {Object} inbox - Inbox object
  * @returns {string} Formatted header string
  */
-export const buildQuotedEmailHeader = (lastEmail, contact, inbox) => {
+export const buildQuotedEmailHeader = (lastEmail, contact, inbox, locale) => {
   if (!lastEmail) {
     return '';
   }
@@ -213,10 +218,10 @@ export const buildQuotedEmailHeader = (lastEmail, contact, inbox) => {
   const isOutgoing = lastEmail.message_type === 1;
 
   if (isOutgoing) {
-    return buildQuotedEmailHeaderFromInbox(lastEmail, inbox);
+    return buildQuotedEmailHeaderFromInbox(lastEmail, inbox, locale);
   }
 
-  return buildQuotedEmailHeaderFromContact(lastEmail, contact);
+  return buildQuotedEmailHeaderFromContact(lastEmail, contact, locale);
 };
 
 /**

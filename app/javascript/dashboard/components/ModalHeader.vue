@@ -25,7 +25,7 @@ export default {
 <!-- Added ref for writing specs -->
 <template>
   <div class="flex flex-col items-start px-8 pt-8 pb-0">
-    <img v-if="headerImage" :src="headerImage" alt="No image" />
+    <img v-if="headerImage" :src="headerImage" :alt="$t('GENERAL.NO_IMAGE')" />
     <h2
       data-test-id="modal-header-title"
       class="text-base font-semibold leading-6 text-n-slate-12"

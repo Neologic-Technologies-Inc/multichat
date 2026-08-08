@@ -47,6 +47,12 @@
     "FORM": {
       "BACK_BUTTON": "Back",
       "SEND_MESSAGE_BUTTON": "Send Message"
+    },
+    "PREVIEW": {
+      "BUTTON": "Button",
+      "CALL_TO_ORDER": "Call us to order",
+      "VISIT_STORE": "Visit our store",
+      "MEDIA_ALT": "Template media"
     }
   }
 }

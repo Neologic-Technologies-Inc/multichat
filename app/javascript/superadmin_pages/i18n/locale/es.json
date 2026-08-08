@@ -1,0 +1,20 @@
+{
+  "SUPERADMIN": {
+    "DASHBOARD": {
+      "TITLE": "Panel de administración",
+      "ACCOUNTS": "Cuentas",
+      "USERS": "Usuarios",
+      "INBOXES": "Bandejas de entrada",
+      "CONVERSATIONS": "Conversaciones"
+    },
+    "PLAYGROUND": {
+      "BACK": "Volver",
+      "TITLE": "Zona de pruebas de Robin AI",
+      "DESCRIPTION_PREFIX": "Chatea con la fuente",
+      "DESCRIPTION_SUFFIX": "y evalúa su eficiencia.",
+      "MESSAGE_PLACEHOLDER": "Escribe un mensaje... [CMD/CTRL + Intro para enviar]",
+      "RESPONSE_ERROR": "Error: No se pudo recuperar la respuesta. Consulta la consola para obtener más información.",
+      "TYPING_INDICATOR_ALT": "Indicador de escritura"
+    }
+  }
+}

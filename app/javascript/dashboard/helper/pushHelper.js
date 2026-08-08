@@ -53,7 +53,7 @@ export const sendRegistrationToServer = subscription => {
   return null;
 };
 
-export const registerSubscription = (onSuccess = () => {}) => {
+export const registerSubscription = (t, onSuccess = () => {}) => {
   if (!window.chatwootConfig.vapidPublicKey) {
     return;
   }
@@ -71,21 +71,21 @@ export const registerSubscription = (onSuccess = () => {}) => {
     .catch(error => {
       // eslint-disable-next-line no-console
       console.error('Push subscription registration failed:', error);
-      useAlert('This browser does not support desktop notification');
+      useAlert(t('PROFILE_SETTINGS.FORM.NOTIFICATIONS.DESKTOP_UNSUPPORTED'));
     });
 };
 
-export const requestPushPermissions = ({ onSuccess }) => {
+export const requestPushPermissions = ({ onSuccess, t }) => {
   if (!('Notification' in window)) {
     // eslint-disable-next-line no-console
     console.warn('Notification is not supported');
-    useAlert('This browser does not support desktop notification');
+    useAlert(t('PROFILE_SETTINGS.FORM.NOTIFICATIONS.DESKTOP_UNSUPPORTED'));
   } else if (Notification.permission === 'granted') {
-    registerSubscription(onSuccess);
+    registerSubscription(t, onSuccess);
   } else if (Notification.permission !== 'denied') {
     Notification.requestPermission(permission => {
       if (permission === 'granted') {
-        registerSubscription(onSuccess);
+        registerSubscription(t, onSuccess);
       }
     });
   }

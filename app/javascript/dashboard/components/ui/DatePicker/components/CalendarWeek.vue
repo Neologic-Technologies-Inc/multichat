@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import {
   monthName,
   yearName,
@@ -40,6 +41,7 @@ const emit = defineEmits([
 
 const { START_CALENDAR } = CALENDAR_TYPES;
 const { MONTH } = CALENDAR_PERIODS;
+const { locale } = useI18n();
 
 const emitHoveredEndDate = day => {
   emit('updateHoveredEndDate', day);
@@ -128,12 +130,14 @@ const dayClasses = day => ({
       :calendar-type="calendarType"
       :first-button-label="
         monthName(
-          calendarType === START_CALENDAR ? startCurrentDate : endCurrentDate
+          calendarType === START_CALENDAR ? startCurrentDate : endCurrentDate,
+          locale
         )
       "
       :button-label="
         yearName(
-          calendarType === START_CALENDAR ? startCurrentDate : endCurrentDate
+          calendarType === START_CALENDAR ? startCurrentDate : endCurrentDate,
+          locale
         )
       "
       @prev="onClickPrev"

@@ -151,6 +151,7 @@ const downloadHeatmapData = () => {
     store.dispatch(props.downloadAction, {
       daysBefore: selectedDaysBefore.value,
       to: getUnixTime(to),
+      fileName: props.title,
     });
     return;
   }

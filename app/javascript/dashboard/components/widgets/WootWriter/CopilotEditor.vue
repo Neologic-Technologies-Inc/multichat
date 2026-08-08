@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, watch, onMounted, useTemplateRef } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import {
   buildMessageSchema,
@@ -20,7 +21,7 @@ const props = defineProps({
   editorId: { type: String, default: '' },
   placeholder: {
     type: String,
-    default: 'Give copilot additional prompts, or ask anything else...',
+    default: '',
   },
   generatedContent: { type: String, default: '' },
   autofocus: {
@@ -40,6 +41,7 @@ const emit = defineEmits([
 ]);
 
 const { formatMessage } = useMessageFormatter();
+const { t } = useI18n();
 
 // Minimal schema with no marks or nodes for copilot input
 const copilotSchema = buildMessageSchema([], []);
@@ -139,7 +141,7 @@ const enabledMenuOptions = computed(() => {
 function reloadState() {
   state = createState(
     props.modelValue,
-    props.placeholder,
+    props.placeholder || t('CONVERSATION.FOOTER.COPILOT_MSG_INPUT'),
     plugins.value,
     enabledMenuOptions.value
   );
@@ -188,7 +190,7 @@ watch(
 onMounted(() => {
   state = createState(
     props.modelValue,
-    props.placeholder,
+    props.placeholder || t('CONVERSATION.FOOTER.COPILOT_MSG_INPUT'),
     plugins.value,
     enabledMenuOptions.value
   );

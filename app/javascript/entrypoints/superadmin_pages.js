@@ -1,6 +1,7 @@
 import 'chart.js';
 import { createApp, h } from 'vue';
 import VueDOMPurifyHTML from 'vue-dompurify-html';
+import i18n from '../superadmin_pages/i18n';
 
 import PlaygroundIndex from '../superadmin_pages/views/playground/Index.vue';
 import DashboardIndex from '../superadmin_pages/views/dashboard/Index.vue';
@@ -21,6 +22,7 @@ const renderComponent = (componentName, props) => {
   });
 
   app.use(VueDOMPurifyHTML);
+  app.use(i18n);
   app.mount('#app');
 };
 

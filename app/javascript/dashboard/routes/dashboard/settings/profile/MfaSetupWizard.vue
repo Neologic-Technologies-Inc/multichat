@@ -169,7 +169,7 @@ defineExpose({
             <img
               v-if="qrCodeUrl"
               :src="qrCodeUrl"
-              alt="MFA QR Code"
+              :alt="$t('MFA_SETTINGS.SETUP.QR_CODE_ALT')"
               class="w-48 h-48 dark:invert-0"
             />
             <div

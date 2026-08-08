@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Icon from 'dashboard/components-next/icon/Icon.vue';
 import Avatar from 'dashboard/components-next/avatar/Avatar.vue';
 import CardPriorityIcon from 'dashboard/components-next/Conversation/ConversationCard/CardPriorityIcon.vue';
@@ -13,14 +14,15 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['unlinkIssue']);
+const { t } = useI18n();
 
 const { linkedIssue } = props;
 
 const priorityMap = {
-  1: 'Urgent',
-  2: 'High',
-  3: 'Medium',
-  4: 'Low',
+  1: 'URGENT',
+  2: 'HIGH',
+  3: 'MEDIUM',
+  4: 'LOW',
 };
 
 const issue = computed(() => linkedIssue.issue);
@@ -36,7 +38,14 @@ const assignee = computed(() => {
 
 const labels = computed(() => issue.value.labels?.nodes || []);
 
-const priorityLabel = computed(() => priorityMap[issue.value.priority]);
+const priorityKey = computed(() => priorityMap[issue.value.priority]);
+const priorityLabel = computed(() =>
+  priorityKey.value
+    ? t(
+        `INTEGRATION_SETTINGS.LINEAR.ADD_OR_LINK.FORM.PRIORITY.OPTIONS.${priorityKey.value}`
+      )
+    : ''
+);
 
 const unlinkIssue = () => {
   emit('unlinkIssue', linkedIssue.id, linkedIssue.issue.identifier);
@@ -90,7 +99,7 @@ const unlinkIssue = () => {
         <div v-if="priorityLabel" class="w-px h-3 bg-n-slate-4" />
 
         <div v-if="priorityLabel" class="flex items-center gap-1.5">
-          <CardPriorityIcon :priority="priorityLabel.toLowerCase()" />
+          <CardPriorityIcon :priority="priorityKey.toLowerCase()" />
           <span class="text-xs text-n-slate-12">
             {{ priorityLabel }}
           </span>

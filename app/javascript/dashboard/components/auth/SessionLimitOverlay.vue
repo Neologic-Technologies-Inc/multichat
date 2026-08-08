@@ -1,7 +1,8 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { format, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { formatDate as formatLocalizedDate } from 'shared/helpers/dateFnsLocale';
 
 import Icon from 'dashboard/components-next/icon/Icon.vue';
 import NextButton from 'dashboard/components-next/button/Button.vue';
@@ -15,7 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(['revoke', 'revokeAll', 'cancel']);
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const revokingId = ref(null);
 const revokingAll = ref(false);
 
@@ -27,12 +28,12 @@ const sortedSessions = computed(() =>
 
 const formatDate = dateStr => {
   if (!dateStr) return '';
-  return format(parseISO(dateStr), 'MMMM d, yyyy');
+  return formatLocalizedDate(parseISO(dateStr), 'MMMM d, yyyy', locale.value);
 };
 
 const formatTime = dateStr => {
   if (!dateStr) return '';
-  return format(parseISO(dateStr), 'hh:mma');
+  return formatLocalizedDate(parseISO(dateStr), 'hh:mma', locale.value);
 };
 
 const isUnknown = val => !val || val === 'Unknown' || val === 'Unknown Browser';

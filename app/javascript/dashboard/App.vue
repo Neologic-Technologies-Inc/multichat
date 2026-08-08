@@ -122,7 +122,7 @@ export default {
       verifyServiceWorkerExistence(registration =>
         registration.pushManager.getSubscription().then(subscription => {
           if (subscription) {
-            registerSubscription();
+            registerSubscription(undefined, this.$t);
           }
         })
       );

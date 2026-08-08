@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
-import { format } from 'date-fns';
 import { useI18n } from 'vue-i18n';
+import { formatDate as formatLocalizedDate } from 'shared/helpers/dateFnsLocale';
 
 const props = defineProps({
   order: {
@@ -10,10 +10,10 @@ const props = defineProps({
   },
 });
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const formatDate = dateString => {
-  return format(new Date(dateString), 'MMM d, yyyy');
+  return formatLocalizedDate(new Date(dateString), 'MMM d, yyyy', locale.value);
 };
 
 const formatCurrency = (amount, currency) => {

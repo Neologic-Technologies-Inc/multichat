@@ -1,11 +1,14 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import Button from 'dashboard/components-next/button/Button.vue';
+
 defineProps({
   message: {
     type: Object,
     required: true,
   },
 });
+const { t } = useI18n();
 </script>
 
 <template>
@@ -23,10 +26,18 @@ defineProps({
       </div>
     </div>
     <div class="flex justify-center items-center p-3">
-      <Button label="Call us to order" link class="hover:!no-underline" />
+      <Button
+        :label="t('CONTENT_TEMPLATES.PREVIEW.CALL_TO_ORDER')"
+        link
+        class="hover:!no-underline"
+      />
     </div>
     <div class="flex justify-center items-center p-3">
-      <Button label="Visit our store" link class="hover:!no-underline" />
+      <Button
+        :label="t('CONTENT_TEMPLATES.PREVIEW.VISIT_STORE')"
+        link
+        class="hover:!no-underline"
+      />
     </div>
   </div>
 </template>

@@ -29,11 +29,11 @@ export default {
     },
     downloadButtonLabel: {
       type: String,
-      default: 'Download Reports',
+      default: '',
     },
     reportTitle: {
       type: String,
-      default: 'Download Reports',
+      default: '',
     },
     hasBackButton: {
       type: Boolean,
@@ -165,9 +165,12 @@ export default {
 </script>
 
 <template>
-  <ReportHeader :header-title="reportTitle" :has-back-button="hasBackButton">
+  <ReportHeader
+    :header-title="reportTitle || $t('REPORT.DEFAULT_TITLE')"
+    :has-back-button="hasBackButton"
+  >
     <V4Button
-      :label="downloadButtonLabel"
+      :label="downloadButtonLabel || $t('REPORT.DEFAULT_DOWNLOAD_BUTTON')"
       icon="i-ph-download-simple"
       size="sm"
       @click="downloadReports"

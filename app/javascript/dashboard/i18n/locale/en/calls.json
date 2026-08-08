@@ -30,6 +30,10 @@
       "NO_REPLY": "No reply",
       "FAILED": "Failed"
     },
+    "FLOATING_WIDGET": {
+      "CUSTOMER_SUPPORT": "Customer support",
+      "UNKNOWN_CALLER": "Unknown caller"
+    },
     "ROW": {
       "PICKED_BY": "Picked by",
       "DIALED_BY": "Dialed by",

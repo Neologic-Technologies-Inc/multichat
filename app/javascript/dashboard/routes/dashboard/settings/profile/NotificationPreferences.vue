@@ -80,6 +80,7 @@ export default {
         // Enable / re-enable push notifications
         requestPushPermissions({
           onSuccess: this.onRegistrationSuccess,
+          t: this.$t,
         });
       } else {
         // Disable push notifications

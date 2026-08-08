@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Button from 'dashboard/components-next/button/Button.vue';
 import Icon from 'dashboard/components-next/icon/Icon.vue';
 
@@ -11,6 +12,7 @@ const props = defineProps({
 });
 
 const actions = computed(() => props.message.actions || []);
+const { t } = useI18n();
 </script>
 
 <template>
@@ -29,7 +31,9 @@ const actions = computed(() => props.message.actions || []);
       class="flex justify-center items-center p-3"
     >
       <Button
-        :label="action.title || action.text || 'Button'"
+        :label="
+          action.title || action.text || t('CONTENT_TEMPLATES.PREVIEW.BUTTON')
+        "
         link
         class="hover:!no-underline"
       >

@@ -4,10 +4,13 @@
     "LOADING": "Cargando tu resumen del año...",
     "ERROR": "No se pudo cargar el resumen del año",
     "CLOSE": "Cerrar",
+    "INTRO_IMAGE_ALT": "Velas",
     "CONVERSATIONS": {
       "TITLE": "Has gestionado",
       "SUBTITLE": "conversaciones",
       "FALLBACK": "Este año no se trató de los números. Se trató de estar presente.",
+      "CLOUD_IMAGE_ALT": "Nube",
+      "QUOTE_IMAGE_ALT": "Comillas",
       "COMPARISON": {
         "0_50": "Estuviste ahí, y así comienza toda buena bandeja de entrada.",
         "50_100": "Mantuviste las respuestas fluyendo y las conversaciones vivas.",
@@ -20,6 +23,8 @@
     "BUSIEST_DAY": {
       "TITLE": "Tu día más ocupado fue",
       "MESSAGE": "{count} conversaciones aquel día.",
+      "COFFEE_IMAGE_ALT": "Café",
+      "QUOTE_IMAGE_ALT": "Comillas",
       "COMPARISON": {
         "0_5": "Un calentamiento que apenas despertó la bandeja de entrada.",
         "5_10": "Suficiente movimiento como para justificar una segunda taza de café.",
@@ -32,6 +37,20 @@
     },
     "PERSONALITY": {
       "TITLE": "Tu estilo de soporte es",
+      "CLOCK_IMAGE_ALT": "Reloj",
+      "QUOTE_IMAGE_ALT": "Comillas",
+      "LABELS": {
+        "SWIFT_HELPER": "Ayudante ágil",
+        "QUICK_RESPONDER": "Respuesta rápida",
+        "STEADY_SUPPORT": "Soporte constante",
+        "THOUGHTFUL_ADVISOR": "Asesor reflexivo"
+      },
+      "RESPONSE_TIME": {
+        "LESS_THAN_A_MINUTE": "menos de un minuto",
+        "MINUTES": "{minutes} minuto | {minutes} minutos",
+        "HOURS": "{hours} hora | {hours} horas",
+        "MORE_THAN_A_DAY": "más de un día"
+      },
       "MESSAGES": {
         "SWIFT_HELPER": "Respondías en {time} de media. Más rápido que la mayoría de las notificaciones.",
         "QUICK_RESPONDER": "Respondías en {time} de media. La bandeja de entrada casi no esperó.",
@@ -49,11 +68,16 @@
       "DOWNLOAD": "Descargar",
       "SHARE_TITLE": "Mi resumen del año {year}",
       "SHARE_TEXT": "¡Mira mi resumen del año {year} con Chatwoot!",
-      "BRANDING": "Hecho con Chatwoot"
+      "BRANDING": "Hecho con Chatwoot",
+      "CLOSE_BUTTON": "Cerrar el diálogo para compartir",
+      "IMAGE_ALT": "Imagen del resumen del año",
+      "SHARE_BUTTON": "Compartir imagen"
     },
     "BANNER": {
       "TITLE": "Tu resumen del año {year} ya está aquí",
-      "BUTTON": "Ver tu impacto"
+      "BUTTON": "Ver tu impacto",
+      "IMAGE_ALT": "Resumen del año",
+      "CLOSE_BUTTON": "Descartar el banner del resumen del año"
     },
     "NAVIGATION": {
       "PREVIOUS": "Anterior",

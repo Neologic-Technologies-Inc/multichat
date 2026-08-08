@@ -360,7 +360,7 @@ export default {
       />
       <NextButton
         v-if="enableContentTemplates"
-        v-tooltip.top-end="'Content Templates'"
+        v-tooltip.top-end="$t('CONVERSATION.FOOTER.CONTENT_TEMPLATES')"
         icon="i-ph-whatsapp-logo"
         slate
         faded
