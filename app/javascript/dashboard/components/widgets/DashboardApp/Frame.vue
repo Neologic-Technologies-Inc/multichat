@@ -1,4 +1,5 @@
 <script>
+/* global axios */
 import LoadingState from 'dashboard/components/widgets/LoadingState.vue';
 
 export default {
@@ -9,6 +10,10 @@ export default {
     config: {
       type: Array,
       default: () => [],
+    },
+    dashboardAppId: {
+      type: [Number, String],
+      required: true,
     },
     currentChat: {
       type: Object,
@@ -62,20 +67,45 @@ export default {
     triggerEvent(event) {
       if (!this.isVisible) return;
       if (event.data === 'chatwoot-dashboard-app:fetch-info') {
-        this.onIframeLoad(0);
+        this.onIframeLoad(0, event);
       }
     },
     getFrameId(index) {
       return `dashboard-app--frame-${this.position}-${index}`;
     },
-    onIframeLoad(index) {
+    async onIframeLoad(index, event = null) {
       // A possible alternative is to use ref instead of document.getElementById
       // However, when ref is used together with v-for, the ref you get will be
       // an array containing the child components mirroring the data source.
       const frameElement = document.getElementById(this.getFrameId(index));
-      const eventData = { event: 'appContext', data: this.dashboardAppContext };
-      frameElement.contentWindow.postMessage(JSON.stringify(eventData), '*');
-      this.iframeLoading = false;
+      const targetOrigin = new URL(this.config[index].url).origin;
+
+      if (
+        event &&
+        (event.source !== frameElement.contentWindow ||
+          event.origin !== targetOrigin)
+      ) {
+        return;
+      }
+
+      try {
+        const { account_id: accountId, id: conversationId } = this.currentChat;
+        const { data } = await axios.post(
+          `/api/v1/accounts/${accountId}/dashboard_apps/${this.dashboardAppId}/session`,
+          { conversation_id: conversationId, frame_url: this.config[index].url }
+        );
+        const eventData = {
+          event: 'appContext',
+          data: { ...this.dashboardAppContext, dashboardAppToken: data.token },
+        };
+        frameElement.contentWindow.postMessage(
+          JSON.stringify(eventData),
+          targetOrigin
+        );
+        this.iframeLoading = false;
+      } catch {
+        this.iframeLoading = false;
+      }
     },
   },
 };

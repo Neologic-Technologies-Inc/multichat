@@ -136,6 +136,7 @@ Rails.application.routes.draw do
           end
           resources :campaigns, only: [:index, :create, :show, :update, :destroy]
           resources :dashboard_apps, only: [:index, :show, :create, :update, :destroy]
+          post 'dashboard_apps/:dashboard_app_id/session', to: 'dashboard_app_sessions#create'
           namespace :channels do
             resource :twilio_channel, only: [:create]
           end
