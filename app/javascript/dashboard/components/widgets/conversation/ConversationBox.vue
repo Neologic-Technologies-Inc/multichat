@@ -139,6 +139,7 @@ export default {
       v-show="activeIndex - 1 === index"
       :key="currentChat.id + '-' + dashboardApp.id"
       :is-visible="activeIndex - 1 === index"
+      :dashboard-app-id="dashboardApp.id"
       :config="dashboardApps[index].content"
       :position="index"
       :current-chat="currentChat"
