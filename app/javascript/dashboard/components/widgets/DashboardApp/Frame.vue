@@ -47,7 +47,8 @@ export default {
     },
     currentAgent() {
       const { id, name, email } = this.$store.getters.getCurrentUser;
-      return { id, name, email };
+      const role = this.$store.getters.getCurrentRole;
+      return { id, name, email, role };
     },
   },
   watch: {

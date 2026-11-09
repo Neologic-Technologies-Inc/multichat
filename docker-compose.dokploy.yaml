@@ -1,10 +1,10 @@
 x-base: &base
-  build:
-    context: .
-    dockerfile: docker/Dockerfile
+  image: neologicchat/chatwoot:latest
   env_file: .env
   volumes:
     - storage_data:/app/storage
+  networks:
+    - dokploy-network
 
 services:
   rails:
@@ -32,6 +32,7 @@ services:
       RAILS_ENV: production
       INSTALLATION_ENV: docker
       POSTGRES_STATEMENT_TIMEOUT: 600s
+    entrypoint: docker/entrypoints/rails.sh
     command: ['bundle', 'exec', 'rails', 'db:chatwoot_prepare']
     restart: 'no'
 
@@ -53,6 +54,8 @@ services:
     env_file: .env
     volumes:
       - redis_data:/data
+    networks:
+      - dokploy-network
     healthcheck:
       test: ['CMD-SHELL', 'redis-cli --no-auth-warning -a "$${REDIS_PASSWORD}" ping | grep -q PONG']
       interval: 10s
@@ -63,3 +66,7 @@ services:
 volumes:
   storage_data:
   redis_data:
+
+networks:
+  dokploy-network:
+    external: true
