@@ -1,8 +1,9 @@
 class DashboardAppTokenService
   TOKEN_LIFETIME = 2.minutes
 
-  def initialize(account:, conversation:, user:, audience:)
+  def initialize(account:, account_role:, conversation:, user:, audience:)
     @account = account
+    @account_role = account_role
     @conversation = conversation
     @user = user
     @audience = audience
@@ -14,7 +15,7 @@ class DashboardAppTokenService
 
   private
 
-  attr_reader :account, :conversation, :user, :audience
+  attr_reader :account, :account_role, :conversation, :user, :audience
 
   def payload
     now = Time.current.to_i
@@ -24,6 +25,7 @@ class DashboardAppTokenService
       aud: audience,
       sub: "dashboard-app-agent:#{user.id}",
       account_id: account.id.to_s,
+      account_role: account_role,
       conversation_id: conversation.id.to_s,
       contact_id: conversation.contact_id.to_s,
       iat: now,

@@ -10,6 +10,7 @@ class Api::V1::Accounts::DashboardAppSessionsController < Api::V1::Accounts::Bas
     render json: {
       token: DashboardAppTokenService.new(
         account: Current.account,
+        account_role: Current.account_user.role,
         conversation: conversation,
         user: Current.user,
         audience: URI.parse(frame_url).origin
